@@ -4,8 +4,8 @@ const express = require("express")
 const mongoose = require('mongoose')
 const app = express();
 const userModel = require('./model/userSchema')
-const jwt = require('jsonwebtoken')
 const bcrypt = require("bcryptjs")
+const jwt = require('jsonwebtoken')
 const PORT = 3001;
 
 //body parser middleware
@@ -92,7 +92,7 @@ app.post('/api/login', async (req,res)=>{
     const comparePass = await bcrypt.compare(password,emailExist.password)
     if(comparePass){
 
-        var token = jwt.sign({email: emailExist.email},'Hania')
+        var token = jwt.sign({email:emailExist.email},'Hania')
         console.log(token)
 
         res.json({
